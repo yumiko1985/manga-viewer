@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マンガビューア</title>
     
-    <!-- ✅ Swiper.js のCDN（これだけでOK！） -->
+    <!-- ✅ Swiper.js のCDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -17,14 +17,23 @@
             font-family: Arial, sans-serif;
         }
         .swiper {
-            width: 80%;
-            height: 600px;
+            width: 100%;
+            max-width: 900px;  /* ✅ ここを調整 */
+            height: 100vh;
+            max-height: 80vh;  /* ✅ ここを調整 */
             margin: auto;
         }
         .swiper-slide {
-            background-size: cover;
-            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: white;
+        }
+        .swiper-slide img {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain; /* ✅ 画像が枠内にフィット！ */
         }
     </style>
 </head>
@@ -34,10 +43,10 @@
     <!-- Swiperコンテナ -->
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="page_001.jpg" width="100%"></div>
-            <div class="swiper-slide"><img src="page_002.jpg" width="100%"></div>
-            <div class="swiper-slide"><img src="page_003.jpg" width="100%"></div>
-            <div class="swiper-slide"><img src="page_004.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="page_001.jpg"></div>
+            <div class="swiper-slide"><img src="page_002.jpg"></div>
+            <div class="swiper-slide"><img src="page_003.jpg"></div>
+            <div class="swiper-slide"><img src="page_004.jpg"></div>
             <div class="page" style="background-image: url('page_005.jpg');"></div>
         <div class="page" style="background-image: url('page_006.jpg');"></div>
         <div class="page" style="background-image: url('page_007.jpg');"></div>
@@ -62,7 +71,6 @@
         <div class="page" style="background-image: url('page_026.jpg');"></div>
         <div class="page" style="background-image: url('page_027.jpg');"></div>
         <div class="page" style="background-image: url('page_028.jpg');"></div>
-        
         </div>
         
         <!-- ページ送りのボタン -->
@@ -73,7 +81,7 @@
 
     <script>
         var swiper = new Swiper('.swiper', {
-            loop: false, // ループさせない（マンガ向け）
+            loop: false,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -86,4 +94,5 @@
     </script>
 </body>
 </html>
+
 
