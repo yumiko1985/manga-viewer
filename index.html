@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マンガビューア（Swiper.js版）</title>
-
-    <!-- ✅ Swiper.js のCDN（
+    <title>マンガビューア</title>
     
-    <!-- jQuery（これが必須！） -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- ✅ 修正：turn.jsの別のCDNを試す -->
-    <script src="turn.min.js"></script>
+    <!-- ✅ Swiper.js のCDN（これだけでOK！） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <style>
         body {
             background-color: #333;
             text-align: center;
             color: white;
+            font-family: Arial, sans-serif;
         }
-        #flipbook {
-            width: 800px;
+        .swiper {
+            width: 80%;
             height: 600px;
-            margin: 50px auto;
+            margin: auto;
         }
-        .page {
-            width: 800px;
-            height: 600px;
+        .swiper-slide {
             background-size: cover;
+            background-position: center;
+            background-color: white;
         }
     </style>
 </head>
 <body>
-    <h1>マンガビューア（ページめくり版）</h1>
-    <div id="flipbook">
-        <div class="page" style="background-image: url('page_001.jpg');"></div>
-        <div class="page" style="background-image: url('page_002.jpg');"></div>
-        <div class="page" style="background-image: url('page_003.jpg');"></div>
-        <div class="page" style="background-image: url('page_004.jpg');"></div>
-        <div class="page" style="background-image: url('page_005.jpg');"></div>
+    <h1>マンガビューア（Swiper.js版）</h1>
+    
+    <!-- Swiperコンテナ -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="page_001.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="page_002.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="page_003.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="page_004.jpg" width="100%"></div>
+            <div class="page" style="background-image: url('page_005.jpg');"></div>
         <div class="page" style="background-image: url('page_006.jpg');"></div>
         <div class="page" style="background-image: url('page_007.jpg');"></div>
         <div class="page" style="background-image: url('page_008.jpg');"></div>
@@ -63,15 +62,26 @@
         <div class="page" style="background-image: url('page_026.jpg');"></div>
         <div class="page" style="background-image: url('page_027.jpg');"></div>
         <div class="page" style="background-image: url('page_028.jpg');"></div>
+        
+        </div>
+        
+        <!-- ページ送りのボタン -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
 
     <script>
-        $(document).ready(function(){
-            $("#flipbook").turn({
-                width: 800,
-                height: 600,
-                autoCenter: true
-            });
+        var swiper = new Swiper('.swiper', {
+            loop: false, // ループさせない（マンガ向け）
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
     </script>
 </body>
