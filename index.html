@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マンガビューア</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/blasten/turn.js/master/lib/turn.min.js"></script>
+    <style>
+        body {
+            background-color: #333;
+            text-align: center;
+            color: white;
+        }
+        #flipbook {
+            width: 800px;
+            height: 600px;
+            margin: 50px auto;
+        }
+        .page {
+            width: 800px;
+            height: 600px;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-    <h1>GitHub Pagesでマンガビューアを作成中！</h1>
+    <h1>マンガビューア（ページめくり版）</h1>
+    <div id="flipbook">
+        <div class="page" style="background-image: url('page_001.jpg');"></div>
+        <div class="page" style="background-image: url('page_002.jpg');"></div>
+        <div class="page" style="background-image: url('page_003.jpg');"></div>
+        <div class="page" style="background-image: url('page_004.jpg');"></div>
+        <!-- 画像を追加する場合は、同じフォーマットで増やす -->
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#flipbook").turn({
+                width: 800,
+                height: 600,
+                autoCenter: true
+            });
+        });
+    </script>
 </body>
 </html>
